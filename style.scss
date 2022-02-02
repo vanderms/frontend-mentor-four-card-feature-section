@@ -1,0 +1,138 @@
+$very-dark-blue: hsl(234, 12%, 34%);
+$grayish-blue: hsl(229, 6%, 66%);
+$very-light-gray: hsl(0, 0%, 98%);
+
+@function rem($px) {
+  $html-font-size: 16;
+  @return #{$px / $html-font-size}rem;
+}
+
+@mixin media-mobile {
+  @media screen and (max-width: rem(800)) {
+    @content;
+  }
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+
+.features{
+  margin-top: rem(80);
+  margin-bottom: rem(80);
+
+  header .title{
+    font-size: rem(36);
+    font-weight: 200;
+    line-height: 1.47;
+    width: rem(450);
+    text-align: center;
+    margin: 0 auto;
+    color: $very-dark-blue;
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  header .copy{
+    font-size: rem(15);
+    width: rem(520);
+    margin: rem(16) auto 0 auto;
+    text-align: center;
+    color: $grayish-blue;
+    line-height: 1.6;
+  }
+
+  .card-list{
+    margin: rem(186) auto 0 auto;    
+    width: rem(1110);
+    gap: rem(24);    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    
+    li:first-of-type{
+      order: 1;
+    }
+
+    li:nth-of-type(2){
+      order: 2;
+      margin-top: -#{rem(128)};
+    }
+
+    li:nth-of-type(3){
+      order: 4;
+      margin-top: -#{rem(128)};
+    }
+
+    li:last-of-type{
+      order: 3;
+    }
+  }
+
+  .card{
+    @include size(rem(354), rem(256));
+    padding: rem(32);
+    box-shadow: 0px 2px 8px hsla(213, 84%, 40%, 0.25);  
+    border-radius: 8px;   
+    position: relative;
+
+    &.red{
+      border-top: 4px solid hsl(0, 78%, 62%);
+    }
+
+    &.green{
+      border-top: 4px solid hsl(180, 62%, 55%);
+    }
+
+    &.yellow{
+      border-top: 4px solid  hsl(34, 97%, 64%);
+    }
+    
+    &.blue{
+      border-top: 4px solid hsl(212, 86%, 64%);
+    }
+
+    h2{
+      font-weight: 600;
+      font-size: rem(20);
+      color: $very-dark-blue;
+    }
+
+    p{
+      font-size: rem(13);
+      font-weight: 400;
+      line-height: 1.6;
+      color: $grayish-blue;
+      margin-top: rem(8);
+    }
+
+    img{
+      position: absolute;
+      bottom: rem(32);
+      right: rem(32);
+    }
+   
+
+  }
+}
